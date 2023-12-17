@@ -1,8 +1,14 @@
 package softuni.restaurant.service.impl;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 import softuni.restaurant.model.entity.ItemEntity;
 import softuni.restaurant.model.entity.ProductEntity;
 import softuni.restaurant.model.service.ProductServiceModel;
@@ -12,12 +18,6 @@ import softuni.restaurant.repository.ProductRepository;
 import softuni.restaurant.service.AllergenService;
 import softuni.restaurant.service.ProductService;
 import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

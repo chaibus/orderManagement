@@ -1,7 +1,13 @@
 package softuni.restaurant.service.impl;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 import softuni.restaurant.model.entity.CartDetailEntity;
 import softuni.restaurant.model.entity.ItemEntity;
 import softuni.restaurant.model.entity.UserEntity;
@@ -10,11 +16,6 @@ import softuni.restaurant.repository.CartDetailRepository;
 import softuni.restaurant.service.CartService;
 import softuni.restaurant.service.ItemService;
 import softuni.restaurant.service.UserService;
-
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

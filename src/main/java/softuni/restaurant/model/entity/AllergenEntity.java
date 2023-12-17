@@ -1,9 +1,13 @@
 package softuni.restaurant.model.entity;
 
-import softuni.restaurant.model.entity.enums.AllergenEnumName;
-
-import javax.persistence.*;
 import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
+import softuni.restaurant.model.entity.enums.AllergenEnumName;
 
 @Entity
 @Table(name = "allergens")

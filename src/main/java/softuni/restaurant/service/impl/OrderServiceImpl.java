@@ -1,7 +1,14 @@
 package softuni.restaurant.service.impl;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 import softuni.restaurant.model.entity.OrderEntity;
 import softuni.restaurant.model.entity.OrderItemEntity;
 import softuni.restaurant.model.entity.UserEntity;
@@ -9,14 +16,12 @@ import softuni.restaurant.model.entity.enums.OrderStatusEnum;
 import softuni.restaurant.model.view.CartDetailViewModel;
 import softuni.restaurant.repository.OrderItemRepository;
 import softuni.restaurant.repository.OrderRepository;
-import softuni.restaurant.service.*;
+import softuni.restaurant.service.CartService;
+import softuni.restaurant.service.OrderItemService;
+import softuni.restaurant.service.OrderService;
+import softuni.restaurant.service.StatsService;
+import softuni.restaurant.service.UserService;
 import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

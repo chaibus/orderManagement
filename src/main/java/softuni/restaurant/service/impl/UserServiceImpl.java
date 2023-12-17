@@ -1,23 +1,23 @@
 package softuni.restaurant.service.impl;
 
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import softuni.restaurant.repository.UserRepository;
-import softuni.restaurant.service.UserService;
+
+import jakarta.transaction.Transactional;
 import softuni.restaurant.model.entity.UserEntity;
 import softuni.restaurant.model.entity.enums.RoleEnum;
 import softuni.restaurant.model.service.UserRegistrationServiceModel;
+import softuni.restaurant.repository.UserRepository;
+import softuni.restaurant.service.UserService;
 import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional

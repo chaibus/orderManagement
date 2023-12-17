@@ -1,7 +1,13 @@
 package softuni.restaurant.model.entity;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Table(name = "categories")
 @Entity

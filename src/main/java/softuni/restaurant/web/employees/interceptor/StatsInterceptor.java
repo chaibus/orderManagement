@@ -3,10 +3,10 @@ package softuni.restaurant.web.employees.interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import softuni.restaurant.service.StatsService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import softuni.restaurant.service.StatsService;
 
 @Component
 public class StatsInterceptor implements HandlerInterceptor {

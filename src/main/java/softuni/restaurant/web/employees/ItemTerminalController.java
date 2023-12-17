@@ -1,12 +1,22 @@
 package softuni.restaurant.web.employees;
 
+import java.io.IOException;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import jakarta.validation.Valid;
 import softuni.restaurant.model.binding.ItemAddBindingModel;
 import softuni.restaurant.model.binding.ItemUpdateBindingModel;
 import softuni.restaurant.model.service.ItemServiceModel;
@@ -15,10 +25,6 @@ import softuni.restaurant.service.CategoryService;
 import softuni.restaurant.service.ItemService;
 import softuni.restaurant.service.PictureService;
 import softuni.restaurant.service.ProductService;
-import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.validation.Valid;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("terminal/items")

@@ -1,5 +1,14 @@
 package softuni.restaurant.web.customers;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,28 +16,22 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockMultipartHttpServletRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
 import softuni.restaurant.model.entity.CartDetailEntity;
 import softuni.restaurant.model.entity.ItemEntity;
 import softuni.restaurant.model.entity.UserEntity;
 import softuni.restaurant.model.entity.enums.RoleEnum;
 import softuni.restaurant.model.entity.enums.TypeEnum;
-import softuni.restaurant.repository.*;
-import softuni.restaurant.service.*;
-
-import java.math.BigDecimal;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import softuni.restaurant.repository.CartDetailRepository;
+import softuni.restaurant.repository.ItemRepository;
+import softuni.restaurant.repository.OrderRepository;
+import softuni.restaurant.repository.UserRepository;
+import softuni.restaurant.service.CartService;
+import softuni.restaurant.service.ItemService;
+import softuni.restaurant.service.UserService;
 
 @SpringBootTest
 @AutoConfigureMockMvc

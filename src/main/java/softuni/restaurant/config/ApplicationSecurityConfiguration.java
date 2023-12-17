@@ -2,68 +2,66 @@ package softuni.restaurant.config;
 
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
 @EnableWebSecurity
-public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class ApplicationSecurityConfiguration {
 
     private final UserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder;
 
     public ApplicationSecurityConfiguration(
             UserDetailsService userDetailsService,
             PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
-        this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    AuthenticationManager authManager(HttpSecurity http) throws Exception {
+    	AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
+    	builder.userDetailsService(userDetailsService);
+    	return builder.build();
+    }
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/terminal/categories/**", "/terminal/users/**", "/terminal/check-username", "/terminal/stats",
+        	.authorizeHttpRequests(authorize -> authorize
+        		.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+        		.requestMatchers("/terminal/categories/**", "/terminal/users/**", "/terminal/check-username", "/terminal/stats",
                         "/terminal/categories/**", "/terminal/items/**", "/terminal/products/**",
                         "/terminal/delete-on-schedule").hasRole("ADMIN")
-                .antMatchers("/terminal", "/terminal/order/**").hasAnyRole("EMPLOYEE", "ADMIN")
-                .antMatchers("/", "/items/foods", "/items/drinks", "/items/others",
+                .requestMatchers("/terminal", "/terminal/order/**").hasAnyRole("EMPLOYEE", "ADMIN")
+                .requestMatchers("/", "/items/foods", "/items/drinks", "/items/others",
                         "/users/login", "/users/register",
                         "/categories", "/contacts",
                         "/items", "/categories/cat/**").permitAll()
-                .antMatchers("/cart/**", "/order/**", "/order-place").authenticated()
-                .and()
+                .requestMatchers("/cart/**", "/order/**", "/order-place").authenticated())
 
-                .formLogin()
-                .loginPage("/users/login")
-                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/")
-                .failureForwardUrl("/users/login-error")
-                .and()
+                .formLogin(login -> login
+	                .loginPage("/users/login")
+	                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+	                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+	                .defaultSuccessUrl("/")
+	                .failureForwardUrl("/users/login-error"))
 
-                .logout()
-                .logoutUrl("/users/logout")
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
-
+                .logout(logout -> logout
+	                .logoutUrl("/users/logout")
+	                .logoutSuccessUrl("/")
+	                .invalidateHttpSession(true)
+	                .deleteCookies("JSESSIONID"));
+        
+        return http.build();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder);
-
-    }
 }

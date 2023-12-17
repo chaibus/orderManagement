@@ -1,6 +1,7 @@
 package softuni.restaurant.config;
 
-import com.cloudinary.Cloudinary;
+import java.util.Map;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-import java.util.Map;
+import com.cloudinary.Cloudinary;
 
 @Configuration
 public class ApplicationBeanConfiguration {
@@ -24,17 +25,17 @@ public class ApplicationBeanConfiguration {
     }
 
     @Bean
-    public ModelMapper modelMapper(){
+    ModelMapper modelMapper(){
         return new ModelMapper();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder(){
         return new Pbkdf2PasswordEncoder();
     }
 
     @Bean
-    public Cloudinary cloudinary() {
+    Cloudinary cloudinary() {
         return new Cloudinary(
                 Map.of(
                         "cloud_name", cloudinaryConfig.getCloudName(),
@@ -45,7 +46,7 @@ public class ApplicationBeanConfiguration {
     }
 
     @Bean
-    public SimpleMailMessage emailTemplate()
+    SimpleMailMessage emailTemplate()
     {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("user@gmail.com");
@@ -56,21 +57,21 @@ public class ApplicationBeanConfiguration {
     }
 
     @Bean
-    public LocaleResolver localeResolver() {
+    LocaleResolver localeResolver() {
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
         cookieLocaleResolver.setCookieName("lang");
         return cookieLocaleResolver;
     }
 
     @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
+    LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
         return lci;
     }
 
     @Bean
-    public MessageSource messageSource() {
+    MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");

@@ -1,9 +1,11 @@
 package softuni.restaurant.model.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import softuni.restaurant.model.entity.enums.RoleEnum;
-
-import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")

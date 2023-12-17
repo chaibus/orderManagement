@@ -1,11 +1,10 @@
 package softuni.restaurant.model.binding;
 
 import org.springframework.web.multipart.MultipartFile;
-import softuni.restaurant.model.validator.UniqueCategoryName;
-import softuni.restaurant.model.validator.UniqueItemName;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import softuni.restaurant.model.validator.UniqueCategoryName;
 
 public class CategoryAddBindingModel {
     @NotBlank

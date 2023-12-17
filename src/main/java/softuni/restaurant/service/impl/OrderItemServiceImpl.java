@@ -1,15 +1,16 @@
 package softuni.restaurant.service.impl;
 
+import java.util.Set;
+
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 import softuni.restaurant.model.entity.ItemEntity;
 import softuni.restaurant.model.entity.OrderItemEntity;
 import softuni.restaurant.repository.OrderItemRepository;
 import softuni.restaurant.service.ItemService;
 import softuni.restaurant.service.OrderItemService;
 import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.transaction.Transactional;
-import java.util.Set;
 
 @Service
 @Transactional

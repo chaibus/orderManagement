@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import softuni.restaurant.service.UserService;
+
+import jakarta.validation.Valid;
 import softuni.restaurant.model.binding.UserRegistrationBindingModel;
 import softuni.restaurant.model.service.UserRegistrationServiceModel;
-
-import javax.validation.Valid;
+import softuni.restaurant.service.UserService;
 
 @Controller
 public class UserRegistrationController {

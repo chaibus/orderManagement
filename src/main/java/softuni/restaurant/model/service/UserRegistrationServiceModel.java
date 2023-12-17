@@ -1,8 +1,5 @@
 package softuni.restaurant.model.service;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class UserRegistrationServiceModel {
 
     private String username;

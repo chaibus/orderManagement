@@ -1,9 +1,8 @@
 package softuni.restaurant.model.validator;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import softuni.restaurant.service.ProductService;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class UniqueProductNameValidator implements ConstraintValidator<UniqueProductName, String> {
     private final ProductService productService;

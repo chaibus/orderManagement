@@ -1,10 +1,10 @@
 package softuni.restaurant.model.view;
 
 
-import softuni.restaurant.model.entity.UserEntity;
-
-import javax.persistence.Transient;
 import java.math.BigDecimal;
+
+import jakarta.persistence.Transient;
+import softuni.restaurant.model.entity.UserEntity;
 
 
 public class CartDetailViewModel {

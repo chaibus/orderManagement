@@ -1,12 +1,19 @@
 package softuni.restaurant.model.entity;
 
-import softuni.restaurant.model.entity.enums.OrderStatusEnum;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import softuni.restaurant.model.entity.enums.OrderStatusEnum;
 
 @Entity
 @Table(name = "orders")

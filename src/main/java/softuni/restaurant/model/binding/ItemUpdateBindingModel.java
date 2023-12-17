@@ -1,14 +1,19 @@
 package softuni.restaurant.model.binding;
 
-import org.springframework.web.multipart.MultipartFile;
-import softuni.restaurant.model.entity.CategoryEntity;
-import softuni.restaurant.model.entity.ProductEntity;
-import softuni.restaurant.model.entity.enums.TypeEnum;
-
-import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import softuni.restaurant.model.entity.CategoryEntity;
+import softuni.restaurant.model.entity.ProductEntity;
+import softuni.restaurant.model.entity.enums.TypeEnum;
 
 public class ItemUpdateBindingModel {
     public Long id;

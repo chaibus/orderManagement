@@ -1,10 +1,9 @@
 package softuni.restaurant.model.validator;
 
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import softuni.restaurant.service.UserService;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class UniqueUserNameValidator implements ConstraintValidator<UniqueUserName, String> {
 

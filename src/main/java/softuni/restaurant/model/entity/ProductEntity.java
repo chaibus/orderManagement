@@ -1,13 +1,17 @@
 package softuni.restaurant.model.entity;
 
-import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "products")
-public class ProductEntity extends BaseEntity{
+public class ProductEntity extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
     @ManyToMany(fetch = FetchType.EAGER)

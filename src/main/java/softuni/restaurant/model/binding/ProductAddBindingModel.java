@@ -1,12 +1,12 @@
 package softuni.restaurant.model.binding;
 
-import softuni.restaurant.model.entity.AllergenEntity;
-import softuni.restaurant.model.validator.UniqueProductName;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import softuni.restaurant.model.entity.AllergenEntity;
+import softuni.restaurant.model.validator.UniqueProductName;
 
 public class ProductAddBindingModel {
     @NotBlank

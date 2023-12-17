@@ -1,8 +1,13 @@
 package softuni.restaurant.model.entity;
 
-import javax.persistence.*;
-import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "cart_detail")

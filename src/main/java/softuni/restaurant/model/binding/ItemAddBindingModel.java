@@ -1,15 +1,20 @@
 package softuni.restaurant.model.binding;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import softuni.restaurant.model.entity.CategoryEntity;
 import softuni.restaurant.model.entity.ProductEntity;
 import softuni.restaurant.model.entity.enums.TypeEnum;
 import softuni.restaurant.model.validator.UniqueItemName;
-
-import javax.validation.constraints.*;
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 public class ItemAddBindingModel {
 

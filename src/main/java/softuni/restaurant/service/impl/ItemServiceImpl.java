@@ -1,12 +1,23 @@
 package softuni.restaurant.service.impl;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import jakarta.persistence.PersistenceException;
+import jakarta.transaction.Transactional;
 import softuni.restaurant.constants.RestaurantConstantImages;
 import softuni.restaurant.model.binding.ItemUpdateBindingModel;
-import softuni.restaurant.model.entity.*;
+import softuni.restaurant.model.entity.AllergenEntity;
+import softuni.restaurant.model.entity.ItemEntity;
+import softuni.restaurant.model.entity.PictureEntity;
 import softuni.restaurant.model.entity.enums.TypeEnum;
 import softuni.restaurant.model.service.ItemServiceModel;
 import softuni.restaurant.model.view.ItemViewModel;
@@ -17,14 +28,6 @@ import softuni.restaurant.service.ItemService;
 import softuni.restaurant.service.PictureService;
 import softuni.restaurant.service.ProductService;
 import softuni.restaurant.web.exception.ObjectNotFoundException;
-
-import javax.persistence.PersistenceException;
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
